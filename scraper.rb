@@ -47,7 +47,7 @@ def scrape_list(url)
         image: tds[3].css('img/@src').text,
         area: area,
         area_id: area_id,
-        term: 2.2,
+        term: '2.2',
         source: @BASE,
       }
       saved_count += 1
