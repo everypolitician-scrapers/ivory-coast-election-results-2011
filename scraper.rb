@@ -23,6 +23,7 @@ end
 
 def scrape_list(url)
   noko = noko_for(url)
+  saved_count = 0
   noko.css('a[href*="departement"]').each do |departement|
     results = departement.xpath('./following::table[1]')
     winner_count = results.css('td.tdJaune').text.gsub(/[[:space:]]+/,' ').split(':').last.to_i
@@ -49,10 +50,11 @@ def scrape_list(url)
         term: 2.2,
         source: @BASE,
       }
-      puts data[:area_id]
+      saved_count += 1
       ScraperWiki.save_sqlite([:name, :term], data)
     end
   end
+  puts "Added #{saved_count} winners"
 end
 
 term = {
