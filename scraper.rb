@@ -57,14 +57,6 @@ def scrape_list(url)
   puts "Added #{saved_count} winners"
 end
 
-term = {
-  id: '2.2',
-  name: '2e législature de la 2e République',
-  start_date: '2012-03-12',
-  source: 'https://fr.wikipedia.org/wiki/Composition_de_l%27Assemblée_nationale_(Côte_d%27Ivoire)',
-}
-ScraperWiki.save_sqlite([:id], term, 'terms')
-
 @BASE = 'http://forums.abidjan.net/elections/legislatives/2011/resultats/resultats.asp'
 # ASP madness, so just use locally saved copy of fully rendered page
 scrape_list('resultats.asp')
